@@ -4,7 +4,7 @@ import MainContainer from '../../Layout/MainContainer'
 const Admin = () => {
   return (
     <MainContainer>
-        <h1>fdg</h1>
+        <h1>welcome</h1>
     </MainContainer>
   )
 }
