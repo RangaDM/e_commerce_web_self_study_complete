@@ -20,7 +20,7 @@ const Footer = () => {
         boxShadow: "rgba(0, 0, 0, 0.56) 0px 22px 70px 4px",
       }}
     >
-      <div className="ml-3 flex">
+      <div className=" w-full flex justify-around">
         <FooterIcon
           clickFun={{ whoIsClick, setWhoIsClick }}
           Icon={HomeOutlinedIcon}
@@ -31,8 +31,6 @@ const Footer = () => {
           Icon={AppsOutlinedIcon}
           iconText="Category"
         />
-      </div>
-      <div className="mr-3 ml-3 flex">
         <FooterIcon
           clickFun={{ whoIsClick, setWhoIsClick }}
           Icon={AccountCircleOutlinedIcon}
