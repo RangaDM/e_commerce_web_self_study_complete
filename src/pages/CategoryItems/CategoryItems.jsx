@@ -42,15 +42,19 @@ const CategoryItems = () => {
   const { categoryID } = useParams();
   const [categoryTitle] = category.filter((e) => e.id === categoryID);
 
-  const [categoryItemsData , setcategoryItemsData] = useState([])
+  const [categoryItemsData, setcategoryItemsData] = useState([]);
 
   useEffect(() => {
-    getDataFromSubCollection('category',categoryID, categoryID , setcategoryItemsData);
-  },[categoryID]
-  )
-console.log('categoryItemsData : ' , categoryItemsData);
+    getDataFromSubCollection(
+      "category",
+      categoryID,
+      categoryID,
+      setcategoryItemsData
+    );
+  }, [categoryID]);
+  // console.log('categoryItemsData : ' , categoryItemsData);
 
-if(categoryItemsData.length===0) return (<Loading/>)
+  if (categoryItemsData.length === 0) return <Loading />;
 
   return (
     <MainContainer>
@@ -58,7 +62,7 @@ if(categoryItemsData.length===0) return (<Loading/>)
         {categoryTitle.title}
       </h1>
       <div className="w-full grid grid-cols-3 grid-rows[auto] gap-5">
-        {categoryItemsData?.map(({img , rating , title} , index) => (
+        {categoryItemsData?.map(({ img, rating, title }, index) => (
           <CategoryItemUnit
             key={index}
             title={title}
