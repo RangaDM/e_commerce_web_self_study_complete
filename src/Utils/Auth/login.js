@@ -5,9 +5,10 @@ import { auth } from "../../Firebase/Firebase";
 const userLogin = (email , password) => {
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed in 
+    // Signed in
     // const user = userCredential.user;
     // ...
+    console.log("user login success");
   })
   .catch((error) => {
     const errorMessage = error.message;

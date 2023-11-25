@@ -1,8 +1,8 @@
 import { doc, getDoc } from "firebase/firestore";
 import db from "../../Firebase/Firebase";
 
-const getDataDoc = (collectionPath, docID , setFunction) => {
-  const docRef = doc(db, collectionPath, docID);
+const getDataDocument = (collectionPath, docId, setFunction) => {
+  const docRef = doc(db, collectionPath, docId);
   getDoc(docRef)
     .then((doc) => {
       if (doc.exists) {
@@ -18,4 +18,4 @@ const getDataDoc = (collectionPath, docID , setFunction) => {
     });
 };
 
-export default getDataDoc;
+export default getDataDocument;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import userRegister from "../Utils/Auth/register";
-import { signOut } from "firebase/auth";
-import { auth } from "../Firebase/Firebase";
+import userLogin from "../Utils/Auth/login";
+import logOut from "../Utils/Auth/logOut";
 
 const Login = () => {
   const [select, setSelect] = useState("login");
@@ -45,17 +45,36 @@ const Login = () => {
 export default Login;
 
 const LoginComponent = () => {
-  return <div>Login
-    <br/>
-    <br/>
-    <button onClick={()=>{
-      signOut(auth).then(() => {
-        // Sign-out successful.
-      }).catch((error) => {
-        // An error happened.
-      });
-    }}>log out</button>
-  </div>;
+  const loginHandler = (e) => {
+    e.preventDefault();
+    const email = e.target["email"].value;
+    const password = e.target["password"].value;
+
+    userLogin(email, password);
+  };
+  return (
+    <div>
+      Login
+      <br />
+      <br />
+      <div>
+        <form onSubmit={loginHandler}>
+        <input type="text" name="email" placeholder="Your email" />
+        <input type="password" name="password" placeholder="Your password" />
+        <br />
+        <button type="submit">Login</button>
+        </form>
+      </div>
+      <br />
+      <div>
+        <button
+          onClick={logOut}
+        >
+          log out
+        </button>
+      </div>
+    </div>
+  );
 };
 
 const RegisterComponent = () => {
@@ -69,13 +88,21 @@ const RegisterComponent = () => {
     const cPassword = e.target[6].value;
     const profileImage = e.target[7].value;
 
-    console.log({name, mobile, email, address, password, cPassword , profileImage});
+    console.log({
+      name,
+      mobile,
+      email,
+      address,
+      password,
+      cPassword,
+      profileImage,
+    });
     // console.log(e.target);
 
-    if(password === cPassword){
+    if (password === cPassword) {
       userRegister(email, password, name, address, mobile, profileImage);
     }
-  }
+  };
   return (
     <div>
       <h1>Register</h1>
@@ -90,10 +117,10 @@ const RegisterComponent = () => {
         <input type="password" placeholder="Password" />
         <input type="password" placeholder="Confirm password" />
         <input type="text" placeholder="Your profile image" />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <button type="submit">Register</button>
       </form>
     </div>
   );
-}
+};

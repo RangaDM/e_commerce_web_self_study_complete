@@ -1,12 +1,16 @@
+import { useSelector } from "react-redux"
 import { Navigate, Outlet } from "react-router-dom"
+import { userSelector } from "../Store/Slices/userSlices"
 
 
 const UserProtected = () => {
 
-    const user = true
-
+  const userData = useSelector(userSelector)
+  console.log(userData);
   return (
-    user? <Outlet/> : <Navigate to="/login"/>
+    // userData? <Outlet/> : <Navigate to="/login"/>
+
+    userData.role? <Outlet/> : <Navigate to="/login"/>
   )
 }
 
